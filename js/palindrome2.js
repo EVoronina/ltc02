@@ -1,16 +1,27 @@
 function isPalindrome(text) {
-    var str = text.toLowerCase().split(/[^a-z]*/).join("");
-    if(str.length >= 2){
+    var characters = "!@#$%^&*()_-+;:',. ";
+    var str = text.toLowerCase();
 
-        if(str[0]==str[str.length - 1]) {    
-            return isPalindrome(str.substr(1,str.length - 2));
+    if(str.length < 2){
+        return true;
+    } else {
+        if(characters.indexOf(str[0])>0) {
+
+            return isPalindrome(str.substr(1,str.length - 1));
+
+        } else if(characters.indexOf(str[str.length - 1])>0) {
+
+      return isPalindrome(str.substr(0,str.length - 1));
+
+        } else if(str[0]==str[str.length - 1]){
+
+      return isPalindrome(str.substr(1,str.length - 2));
+
         } else {
             return false;
-        }
-    }else{
-        return true;
-    }
+        }     
+    }   
 }
-console.log(isPalindrome("Not New York, Roy went on"));
+console.log(isPalindrome("Not New York, Roy went on."));
 console.log(isPalindrome("A man, a plan a canal-Panama"));
-console.log(isPalindrome("dfgdsfgsdfgs"));
+console.log(isPalindrome("jkjlkjlkjgg"));
